@@ -8,18 +8,23 @@
         function updateClock() {
             // 現在時刻を取得
             var now = new Date();
+            var year = now.getFullYear();
+            var month = now.getMonth() + 1;
+            var day = now.getDate();
             var hours = now.getHours();
             var minutes = now.getMinutes();
             var seconds = now.getSeconds();
 
             // 1桁の場合は0を付ける
+            if (month < 10) month = '0' + month;
+            if (day < 10) day = '0' + day;
             if (hours < 10) hours = '0' + hours;
             if (minutes < 10) minutes = '0' + minutes;
             if (seconds < 10) seconds = '0' + seconds;
 
-            // 時刻を表示
-            var timeString = hours + ':' + minutes + ':' + seconds;
-            document.getElementById('clock').innerHTML = timeString;
+            // 日付と時刻を表示
+            var dateTimeString = year + '/' + month + '/' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+            document.getElementById('clock').innerHTML = dateTimeString;
         }
 
         // 1秒ごとにupdateClock関数を実行
@@ -31,8 +36,8 @@
 </head>
 <body>
     <h1>現在時刻</h1>
-    <div id="clock" style="font-size: 48px; font-weight: bold; color: blue; margin: 20px 0;">
-        00:00:00
+    <div id="clock" style="font-size: 48px; font-weight: bold; color: blue; margin: 20px 0; border: 2px solid black; background-color: lightgray; padding: 20px;">
+        0000/00/00 00:00:00
     </div>
     <h1>HTML基礎確認</h1>
     <div>
